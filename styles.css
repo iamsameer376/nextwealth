@@ -276,16 +276,23 @@ button {
   min-height: 44px;
 }
 
-.brand-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(41, 151, 255, 0.4));
-  transition: transform var(--transition-fast);
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(41, 151, 255, 0.3));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+  display: block;
 }
 
-.brand-logo:hover .brand-icon {
-  transform: rotate(15deg) scale(1.05);
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 3px 12px rgba(41, 151, 255, 0.45));
+}
+
+.footer-logo-img {
+  height: 42px;
 }
 
 .brand-text {
@@ -2557,6 +2564,10 @@ button {
 
   .brand-tag {
     display: none;
+  }
+
+  .brand-logo-img {
+    height: 32px;
   }
 
   .hero-title {
