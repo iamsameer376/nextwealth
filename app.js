@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveStudio();
   initPocModal();
   initCopyButtons();
+  initFaqAccordion();
   initScrollReveal();
 });
 
@@ -514,11 +515,43 @@ function initCopyButtons() {
 }
 
 /* ==========================================================================
-   8. Scroll Reveal Observer
+   8. FAQ Accordion System
+   ========================================================================== */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question');
+    if (!questionBtn) return;
+
+    questionBtn.addEventListener('click', () => {
+      const isCurrentlyActive = item.classList.contains('active');
+
+      // Close all other FAQ items for a polished accordion experience
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          const otherBtn = otherItem.querySelector('.faq-question');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current
+      item.classList.toggle('active', !isCurrentlyActive);
+      questionBtn.setAttribute('aria-expanded', String(!isCurrentlyActive));
+    });
+  });
+}
+
+/* ==========================================================================
+   9. Scroll Reveal Observer
    ========================================================================== */
 function initScrollReveal() {
   const targets = document.querySelectorAll(
-    '.stat-card, .industry-card, .pipeline-step-card, .service-bento-large, .service-bento-small, .story-card, .office-card, .impact-card'
+    '.stat-card, .industry-card, .pipeline-step-card, .service-bento-small, .story-card, .office-card, .impact-card, ' +
+    '.modality-card, .workflow-card, .tooling-item, .security-card, .app-card, .rt-card, .pillar-card, .testi-card, ' +
+    '.cs-card, .resource-card, .faq-item, .annotation-overview-card, .genai-hero-card'
   );
 
   const observer = new IntersectionObserver((entries) => {
@@ -529,8 +562,8 @@ function initScrollReveal() {
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   targets.forEach(target => {
