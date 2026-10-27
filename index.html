@@ -2,10 +2,13 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <title>NextWealth — AI Data Labeling & HITL Annotation Services</title>
   <meta name="description" content="Your AI is only as good as the data behind it. Fortune 500 AI teams trust NextWealth’s 5,000+ specialists operating from Tier-2 India for high-accuracy HITL data annotation.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#07090e">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
@@ -63,6 +66,19 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#impact" class="nav-link">Social Impact</a>
         <a href="#offices" class="nav-link">Global Offices</a>
+        
+        <div class="mobile-nav-footer">
+          <button class="btn btn-primary btn-block open-poc-modal">
+            <span>Book a Free POC</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="mobile-nav-contact">
+            <span>Direct Inquiries:</span>
+            <a href="mailto:shreya.bhattacharjee@nextwealth.com">shreya.bhattacharjee@nextwealth.com</a>
+          </div>
+        </div>
       </nav>
 
       <div class="nav-actions">
@@ -100,6 +116,9 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
 
   <main>
     <!-- HERO SECTION -->
@@ -191,6 +210,26 @@
                   <div class="chip-val">Tier-2 Hubs</div>
                   <div class="chip-lbl">India Innovation Centers</div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Mobile-only Telemetry Grid -->
+            <div class="mobile-telemetry-grid">
+              <div class="mobile-chip glass-card">
+                <span class="chip-val">5,000+</span>
+                <span class="chip-lbl">Domain Specialists</span>
+              </div>
+              <div class="mobile-chip glass-card">
+                <span class="chip-val">SOC2 Type II</span>
+                <span class="chip-lbl">Zero Data Leakage</span>
+              </div>
+              <div class="mobile-chip glass-card">
+                <span class="chip-val">NPS 85+</span>
+                <span class="chip-lbl">Client Benchmark</span>
+              </div>
+              <div class="mobile-chip glass-card">
+                <span class="chip-val">Tier-2 Hubs</span>
+                <span class="chip-lbl">Innovation Centers</span>
               </div>
             </div>
           </div>

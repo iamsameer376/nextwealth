@@ -59,23 +59,57 @@ function initNavbarScroll() {
 }
 
 /* ==========================================================================
-   3. Mobile Menu Toggle
+   3. Mobile Menu Toggle (iOS & Android Touch Support)
    ========================================================================== */
 function initMobileMenu() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
   if (!mobileToggle || !navMenu) return;
 
-  mobileToggle.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
-    mobileToggle.setAttribute('aria-expanded', isOpen);
+  function toggleMenu(forceClose = false) {
+    const isCurrentlyOpen = navMenu.classList.contains('open');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    navMenu.classList.toggle('open', shouldOpen);
+    mobileToggle.classList.toggle('active', shouldOpen);
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.toggle('active', shouldOpen);
+    }
+    document.body.classList.toggle('menu-locked', shouldOpen);
+    mobileToggle.setAttribute('aria-expanded', shouldOpen);
+  }
+
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
   });
+
+  if (mobileBackdrop) {
+    mobileBackdrop.addEventListener('click', () => {
+      toggleMenu(true);
+    });
+  }
 
   // Close menu when clicking any nav link
   navMenu.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('open');
+      toggleMenu(true);
     });
+  });
+
+  // Close menu when clicking POC button inside mobile menu
+  navMenu.querySelectorAll('.open-poc-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleMenu(true);
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      toggleMenu(true);
+    }
   });
 }
 
