@@ -44,7 +44,7 @@ You can run the built-in lightweight static server:
 ```bash
 node server.js
 ```
-Then open [http://127.0.0.1:3000/](http://127.0.0.1:3000/) in your browser.
+Then open https://nextwealth-rho.vercel.app/ in your browser.
 
 Alternatively, you can open `index.html` directly in any web browser.
 
